@@ -1,0 +1,248 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Green Commute",
+    "description" : "Green Commute is a job seeking app to help people find jobs with green commute routes from their home"
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/Avinash0110/greencommute/1.0.0"
+  } ],
+  "paths" : {
+    "/api/users" : {
+      "description" : "User resource",
+      "get" : {
+        "tags" : [ "users" ],
+        "description" : "Operation to fetch all users",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "user_name",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "john"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "properties" : {
+                      "user_id" : {
+                        "type" : "integer",
+                        "example" : 1
+                      },
+                      "user_name" : {
+                        "type" : "string",
+                        "example" : "john"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jobs" : {
+      "description" : "jobs resource",
+      "get" : {
+        "tags" : [ "jobs" ],
+        "summary" : "get all jobs",
+        "description" : "Operation to fetch all jobs",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "user_name",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "john"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "properties" : {
+                      "user_id" : {
+                        "type" : "integer",
+                        "example" : 1
+                      },
+                      "user_name" : {
+                        "type" : "string",
+                        "example" : "john"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "jobs" ],
+        "summary" : "add new job",
+        "description" : "Operation to fetch all jobs",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "user_name",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "john"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "user_id" : {
+                    "type" : "integer",
+                    "format" : 1
+                  },
+                  "user_name" : {
+                    "type" : "string",
+                    "format" : "john"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "properties" : {
+                      "user_id" : {
+                        "type" : "integer",
+                        "example" : 1
+                      },
+                      "user_name" : {
+                        "type" : "string",
+                        "example" : "john"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jobs/{job_id}" : {
+      "get" : {
+        "tags" : [ "jobs" ],
+        "summary" : "get job  by job_id",
+        "description" : "get job by id",
+        "parameters" : [ {
+          "name" : "job_id",
+          "in" : "path",
+          "description" : "get job details by  id.",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : "application/json",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "job_id" : {
+                  "type" : "integer"
+                },
+                "job_title" : {
+                  "type" : "string"
+                },
+                "organization_id" : {
+                  "type" : "string",
+                  "format" : "uuid"
+                },
+                "job_description" : {
+                  "type" : "string"
+                },
+                "required_skills" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid id"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "jobs" ],
+        "summary" : "delete job by job_id",
+        "description" : "delete jobs by id",
+        "parameters" : [ {
+          "name" : "job_id",
+          "in" : "path",
+          "description" : "delete job details by  id.",
+          "required" : true,
+          "type" : "integer",
+          "example" : 1
+        } ]
+      },
+      "put" : {
+        "tags" : [ "jobs" ],
+        "summary" : "Update job",
+        "description" : "update job details by job id.",
+        "parameters" : [ {
+          "name" : "job_id",
+          "in" : "path",
+          "description" : "job that need to be updated",
+          "required" : true,
+          "type" : "integer",
+          "example" : 1
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Updated job object",
+          "required" : true,
+          "schema" : null
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid job supplied"
+          },
+          "404" : {
+            "description" : "Job not found\""
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "Jobs" : "type:object"
+  }
+}
